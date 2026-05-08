@@ -36,7 +36,8 @@ export class TemplateComponent {
 
   selectedTemplate: any = null;
 
-  verTemplate(): void {
+  verTemplate(template: any): void {
+    this.selectedTemplate = template;
     this.isModalOpen = true;
   }
 

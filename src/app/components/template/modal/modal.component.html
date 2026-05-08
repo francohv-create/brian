@@ -8,10 +8,8 @@
       </div>
       <button class="ver-close" (click)="close.emit()">✕</button>
     </div>
-    <div class="ver-panel-body" id="ver-body"></div>
-    <div class="ver-panel-foot">
-      <button class="btn-ver-usar" id="btn-ver-usar">Usar template</button>
-      <button class="btn-ver-dup" id="btn-ver-dup">Duplicar</button>
+    <div class="ver-panel-body" id="ver-body">
+      <pre><code>{{ getTemplate() }}</code></pre>
     </div>
   </div>
 </div>
