@@ -18,7 +18,7 @@ export class AnalizeComponent implements OnInit, OnDestroy {
   hasReport = false;
   currentStep = 0;
   progress = 0;
-  private dataReady = false;
+  dataReady = false;
   data$: Observable<any>;
   STEPS = [
     { // Translated names and descriptions

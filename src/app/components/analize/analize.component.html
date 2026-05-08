@@ -1,6 +1,11 @@
-<ng-container *ngIf="!hasReport">
+<ng-container *ngIf="hasReport; else proposal">
   <brian-progress-bar></brian-progress-bar>
 </ng-container>
+<ng-template #proposal>
+  <ng-container *ngIf="this.dataReady">
+    <app-download-proposal></app-download-proposal>
+  </ng-container>
+</ng-template>
 
 <div class="gen-screen">
   <div class="gen-inner">
@@ -9,8 +14,12 @@
       <div class="online-dot"></div>
     </div>
 
-    <div class="gen-label">{{ hasReport ? 'Brian · finished' : 'Brian working' }}</div>
-    <div class="gen-title">{{ hasReport ? 'Proposal generated' : 'Generating proposal...' }}</div>
+    <div class="gen-label">
+      {{ hasReport ? "Brian · finished" : "Brian working" }}
+    </div>
+    <div class="gen-title">
+      {{ hasReport ? "Proposal generated" : "Generating proposal..." }}
+    </div>
     <div class="gen-sub"></div>
 
     <div class="gen-card" *ngIf="!hasReport">
@@ -84,15 +93,24 @@
                 <div class="desc">{{ step.desc }}</div>
               </div>
 
-              <span class="step-badge badge-done" *ngIf="step.status === 'done'">
+              <span
+                class="step-badge badge-done"
+                *ngIf="step.status === 'done'"
+              >
                 Completed
               </span>
 
-              <span class="step-badge badge-running" *ngIf="step.status === 'running'">
+              <span
+                class="step-badge badge-running"
+                *ngIf="step.status === 'running'"
+              >
                 In progress
               </span>
 
-              <span class="step-badge badge-waiting" *ngIf="step.status === 'waiting'">
+              <span
+                class="step-badge badge-waiting"
+                *ngIf="step.status === 'waiting'"
+              >
                 Waiting
               </span>
             </div>
@@ -109,9 +127,7 @@
       <!-- HERO -->
       <section class="report-hero">
         <div class="report-hero-left">
-          <div class="report-eyebrow">
-            Competitive Analysis Proposal
-          </div>
+          <div class="report-eyebrow">Competitive Analysis Proposal</div>
 
           <h1 class="report-site-name">
             {{ data?.payload?.targetSite || "Unknown target" }}
@@ -148,8 +164,19 @@
 
           <button class="report-export-btn" (click)="exportPdf()">
             <svg viewBox="0 0 16 16" fill="none" width="14" height="14">
-              <path d="M8 1v9M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M2 11v2a1 1 0 001 1h10a1 1 0 001-1v-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path
+                d="M8 1v9M4 6l4 4 4-4"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M2 11v2a1 1 0 001 1h10a1 1 0 001-1v-2"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
             </svg>
             Export PDF
           </button>
@@ -157,13 +184,48 @@
       </section>
 
       <!-- SUMMARY -->
-      <section class="report-panel report-summary-panel" *ngIf="data?.payload?.summary">
+      <section
+        class="report-panel report-summary-panel"
+        *ngIf="data?.payload?.summary"
+      >
         <div class="report-panel-title">
           <svg viewBox="0 0 16 16" fill="none" width="16" height="16">
-            <rect x="1" y="1" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.4"/>
-            <line x1="4" y1="5" x2="12" y2="5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
-            <line x1="4" y1="8" x2="10" y2="8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
-            <line x1="4" y1="11" x2="8" y2="11" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+            <rect
+              x="1"
+              y="1"
+              width="14"
+              height="14"
+              rx="3"
+              stroke="currentColor"
+              stroke-width="1.4"
+            />
+            <line
+              x1="4"
+              y1="5"
+              x2="12"
+              y2="5"
+              stroke="currentColor"
+              stroke-width="1.3"
+              stroke-linecap="round"
+            />
+            <line
+              x1="4"
+              y1="8"
+              x2="10"
+              y2="8"
+              stroke="currentColor"
+              stroke-width="1.3"
+              stroke-linecap="round"
+            />
+            <line
+              x1="4"
+              y1="11"
+              x2="8"
+              y2="11"
+              stroke="currentColor"
+              stroke-width="1.3"
+              stroke-linecap="round"
+            />
           </svg>
           Summary
         </div>
@@ -174,14 +236,37 @@
       </section>
 
       <!-- TWO-COLUMN: Missing Features + Competitor Features -->
-      <div class="report-duo" *ngIf="data?.payload?.missingFeatures?.length || data?.payload?.competitorFeatures?.length">
+      <div
+        class="report-duo"
+        *ngIf="
+          data?.payload?.missingFeatures?.length ||
+          data?.payload?.competitorFeatures?.length
+        "
+      >
         <!-- MISSING FEATURES -->
-        <section class="report-panel" *ngIf="data?.payload?.missingFeatures?.length">
+        <section
+          class="report-panel"
+          *ngIf="data?.payload?.missingFeatures?.length"
+        >
           <div class="report-panel-title">
             <svg viewBox="0 0 16 16" fill="none" width="16" height="16">
-              <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.4"/>
-              <line x1="8" y1="5" x2="8" y2="9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <circle cx="8" cy="11.5" r="0.8" fill="currentColor"/>
+              <circle
+                cx="8"
+                cy="8"
+                r="6.5"
+                stroke="currentColor"
+                stroke-width="1.4"
+              />
+              <line
+                x1="8"
+                y1="5"
+                x2="8"
+                y2="9"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+              <circle cx="8" cy="11.5" r="0.8" fill="currentColor" />
             </svg>
             Missing Features
           </div>
@@ -207,11 +292,27 @@
         </section>
 
         <!-- COMPETITORS -->
-        <section class="report-panel" *ngIf="data?.payload?.competitorFeatures?.length">
+        <section
+          class="report-panel"
+          *ngIf="data?.payload?.competitorFeatures?.length"
+        >
           <div class="report-panel-title">
             <svg viewBox="0 0 16 16" fill="none" width="16" height="16">
-              <path d="M6 2l6 6-6 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M2 2l6 6-6 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity="0.4"/>
+              <path
+                d="M6 2l6 6-6 6"
+                stroke="currentColor"
+                stroke-width="1.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M2 2l6 6-6 6"
+                stroke="currentColor"
+                stroke-width="1.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                opacity="0.4"
+              />
             </svg>
             Competitor Features
           </div>
@@ -238,24 +339,48 @@
       </div>
 
       <!-- TWO-COLUMN: User Feedback + Industry Standards -->
-      <div class="report-duo" *ngIf="data?.payload?.userRequests?.length || data?.payload?.industryStandards?.length">
+      <div
+        class="report-duo"
+        *ngIf="
+          data?.payload?.userRequests?.length ||
+          data?.payload?.industryStandards?.length
+        "
+      >
         <!-- USER FEEDBACK -->
-        <section class="report-panel" *ngIf="data?.payload?.userRequests?.length">
+        <section
+          class="report-panel"
+          *ngIf="data?.payload?.userRequests?.length"
+        >
           <div class="report-panel-title">
             <svg viewBox="0 0 16 16" fill="none" width="16" height="16">
-              <path d="M3 2h10a1 1 0 011 1v7a1 1 0 01-1 1H5l-3 3V3a1 1 0 011-1z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+              <path
+                d="M3 2h10a1 1 0 011 1v7a1 1 0 01-1 1H5l-3 3V3a1 1 0 011-1z"
+                stroke="currentColor"
+                stroke-width="1.3"
+                stroke-linejoin="round"
+              />
             </svg>
             User Feedback
           </div>
 
           <div class="report-feedback-list">
-            <div class="report-feedback-item" *ngFor="let req of data.payload.userRequests">
+            <div
+              class="report-feedback-item"
+              *ngFor="let req of data.payload.userRequests"
+            >
               <div class="report-feedback-text">
                 {{ req?.request || "-" }}
               </div>
 
               <div class="report-feedback-meta">
-                <span class="report-sentiment-badge" [class.s-negative]="req?.sentiment === 'negative'" [class.s-positive]="req?.sentiment === 'positive'" [class.s-neutral]="req?.sentiment === 'neutral' || req?.sentiment === 'mixed'">
+                <span
+                  class="report-sentiment-badge"
+                  [class.s-negative]="req?.sentiment === 'negative'"
+                  [class.s-positive]="req?.sentiment === 'positive'"
+                  [class.s-neutral]="
+                    req?.sentiment === 'neutral' || req?.sentiment === 'mixed'
+                  "
+                >
                   {{ req?.sentiment || "unknown" }}
                 </span>
 
@@ -268,10 +393,18 @@
         </section>
 
         <!-- INDUSTRY STANDARDS -->
-        <section class="report-panel" *ngIf="data?.payload?.industryStandards?.length">
+        <section
+          class="report-panel"
+          *ngIf="data?.payload?.industryStandards?.length"
+        >
           <div class="report-panel-title">
             <svg viewBox="0 0 16 16" fill="none" width="16" height="16">
-              <path d="M8 1l2.5 5 5.5.8-4 3.9 1 5.5L8 13.7l-5 2.5 1-5.5-4-3.9 5.5-.8z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+              <path
+                d="M8 1l2.5 5 5.5.8-4 3.9 1 5.5L8 13.7l-5 2.5 1-5.5-4-3.9 5.5-.8z"
+                stroke="currentColor"
+                stroke-width="1.2"
+                stroke-linejoin="round"
+              />
             </svg>
             Industry Standards
           </div>
@@ -308,8 +441,13 @@
       <section class="report-panel" *ngIf="data?.payload?.sources?.length">
         <div class="report-panel-title">
           <svg viewBox="0 0 16 16" fill="none" width="16" height="16">
-            <path d="M4 2h8l2 3v8a1 1 0 01-1 1H3a1 1 0 01-1-1V5l2-3z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
-            <path d="M2 5h12" stroke="currentColor" stroke-width="1.3"/>
+            <path
+              d="M4 2h8l2 3v8a1 1 0 01-1 1H3a1 1 0 01-1-1V5l2-3z"
+              stroke="currentColor"
+              stroke-width="1.3"
+              stroke-linejoin="round"
+            />
+            <path d="M2 5h12" stroke="currentColor" stroke-width="1.3" />
           </svg>
           Sources
         </div>

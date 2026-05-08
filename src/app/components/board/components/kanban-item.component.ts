@@ -27,7 +27,7 @@ const DEFAULT_COLOR = { bg: 'rgba(97, 97, 255, 0.1)', color: 'var(--violet)' };
   template: `
     <div class="kanban-ticket">
       @let ticket = item();
-      @let statusColor = statusColorMap();
+      <!-- @let statusColor = statusColorMap(); -->
 
       <p class="kanban-ticket-title">{{ ticket.title }}</p>
 
