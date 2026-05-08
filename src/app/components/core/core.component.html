@@ -8,10 +8,10 @@
     <div class="online-dot"></div>
   </div>
 
-  <div class="brian-label">Brian · en línea</div>
-  <div class="brian-title">¿Para quien generamos la propuesta?</div>
+  <div class="brian-label">Brian · online</div> <!-- Translated 'en línea' to 'online' -->
+  <div class="brian-title">For whom do we generate the proposal?</div> 
   <!-- <div class="brian-sub">
-    Tengo 12 propuestas anteriores listas para aprender de ellas.
+    I have 12 previous proposals ready to learn from them.
   </div> -->
 </div>
 <form
@@ -21,21 +21,21 @@
   [class.loading]="loading"
 >
   <div class="tags">
-    <div class="tag" [class.on]="mode === 'nuevo'" (click)="setMode('nuevo')">
-      Cliente nuevo
+    <div class="tag" [class.on]="mode === 'new'" (click)="setMode('new')"> <!-- Changed 'nuevo' to 'new' -->
+      New Client 
     </div>
 
-    <div class="tag" [class.on]="mode === 'actual'" (click)="setMode('actual')">
-      Cliente actual
+    <div class="tag" [class.on]="mode === 'current'" (click)="setMode('current')"> <!-- Changed 'actual' to 'current' -->
+      Current Client 
     </div>
-    <div *ngIf="mode === 'actual'" class="client-input">
+    <div *ngIf="mode === 'current'" class="client-input"> <!-- Changed 'actual' to 'current' -->
       <input
         type="text"
         formControlName="clientName"
-        placeholder="Nombre del cliente"
+        placeholder="Client Name" 
       />
       <div class="error" *ngIf="form.get('clientName')?.invalid">
-        El mensaje es obligatorio
+        The message is required 
       </div>
     </div>
   </div>
@@ -45,11 +45,11 @@
       formControlName="message"
       (focus)="onFocusTextarea()"
       [class.expanded]="isExpanded"
-      placeholder="Pedile algo a Brian..."
+      placeholder="Ask Brian something..." 
     ></textarea>
     <div class="input-actions">
       <button class="send-btn" type="submit">
-        Generar
+        Generate 
         <svg viewBox="0 0 16 16" fill="none">
           <path
             d="M3 8h10M9 4l4 4-4 4"
@@ -63,10 +63,10 @@
     </div>
   </div>
   <div
-    class="error"
+    class="error" 
     *ngIf="form.get('message')?.invalid && form.get('message')?.touched"
   >
-    El mensaje es obligatorio
+    The message is required 
   </div>
 
   <div class="tags">

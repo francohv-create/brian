@@ -80,7 +80,7 @@ textarea::-webkit-scrollbar-thumb {
   margin: 8px 0;
 }
 
-/* base */
+/* base */ /* Translated comment */
 .dot {
   width: 8px;
   height: 8px;
@@ -88,18 +88,18 @@ textarea::-webkit-scrollbar-thumb {
   transition: all 0.3s ease;
 }
 
-/* ✔ ejecutado */
+/* ✔ executed */ /* Translated comment */
 .dot.done {
-  background: #00c875; /* verde */
+  background: #00c875; /* green */ /* Translated comment */
 }
 
-/* 🔵 pendiente */
+/* 🔵 pending */ /* Translated comment */
 .dot.pending {
-  background: var(--violet); /* celeste */
+  background: var(--violet); /* light blue */ /* Translated comment */
   opacity: 0.4;
 }
 
-/* 🔵 actual */
+/* 🔵 current */ /* Translated comment */
 .dot.active {
   background: var(--violet);
   animation: pulse 1s infinite;
@@ -120,7 +120,7 @@ span.active {
   font-weight: 500;
 }
 
-/* spinner alineado */
+/* aligned spinner */ /* Translated comment */
 brian-spinner {
   margin-right: 6px;
 }

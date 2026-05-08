@@ -21,29 +21,29 @@ export class AnalizeComponent implements OnInit, OnDestroy {
   private dataReady = false;
   data$: Observable<any>;
   STEPS = [
-    {
-      name: 'Reconocimiento',
-      desc: 'Identificando industria y contexto del cliente',
+    { // Translated names and descriptions
+      name: 'Recognition',
+      desc: 'Identifying industry and client context',
       status: 'running' as StepStatus,
     },
     {
-      name: 'Análisis técnico',
-      desc: 'Revisando experiencia, tecnología y friction points',
+      name: 'Technical Analysis',
+      desc: 'Reviewing experience, technology, and friction points',
       status: 'waiting' as StepStatus,
     },
     {
-      name: 'Benchmark sectorial',
-      desc: 'Comparando con referentes del mercado',
+      name: 'Sectoral Benchmark',
+      desc: 'Comparing with market leaders',
       status: 'waiting' as StepStatus,
     },
     {
-      name: 'Investigación de mercado',
-      desc: 'Explorando oportunidades y demanda no cubierta',
+      name: 'Market Research',
+      desc: 'Exploring opportunities and unmet demand',
       status: 'waiting' as StepStatus,
     },
     {
-      name: 'Síntesis y propuesta',
-      desc: 'Consolidando hallazgos y generando documento final',
+      name: 'Synthesis and Proposal',
+      desc: 'Consolidating findings and generating final document',
       status: 'waiting' as StepStatus,
     },
   ];

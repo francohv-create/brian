@@ -14,18 +14,18 @@
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }"
     >
-      Inicio
+      Home
     </a>
     <a class="nav-item" routerLink="/template" routerLinkActive="active">
       Template
     </a>
     <a class="nav-item" routerLink="/board" routerLinkActive="active">
-      Biblioteca
+      Resources
     </a>
   </div>
   <div class="topbar-right">
     <button class="btn-primary" *ngIf="isBoard" (click)="openModal()">
-      + Nueva propuesta
+      + New Proposal
     </button>
     <div class="avatar">QBK</div>
   </div>

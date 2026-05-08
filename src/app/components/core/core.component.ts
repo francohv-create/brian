@@ -12,7 +12,7 @@ import { CompetitiveAnalysisService } from '../../services/competitve-analisys.s
   encapsulation: ViewEncapsulation.None,
 })
 export class CoreComponent {
-  mode: 'nuevo' | 'actual' = 'nuevo';
+  mode: 'new' | 'current' = 'new'; // Translated 'nuevo' to 'new', 'actual' to 'current'
   isFocused = false;
   value = '';
   clientName = '';
@@ -24,10 +24,10 @@ export class CoreComponent {
     protected competitiveAnalysisService: CompetitiveAnalysisService,
   ) {}
 
-  setMode(mode: 'nuevo' | 'actual') {
+  setMode(mode: 'new' | 'current') { // Translated 'nuevo' to 'new', 'actual' to 'current'
     this.mode = mode;
 
-    if (mode === 'nuevo') {
+    if (mode === 'new') { // Translated 'nuevo' to 'new'
       this.clientName = '';
     }
   }
@@ -36,23 +36,23 @@ export class CoreComponent {
       this.isExpanded = true;
     }
   }
-  tags: Tag[] = [
-    { label: 'Análisis técnico', color: '#6161ff', active: true },
-    { label: 'Benchmarking competencia', color: '#9450fd', active: false },
-    { label: 'Análisis de mercado', color: '#00c875', active: false },
-    { label: 'UX / accesibilidad', color: '#3ac9ff', active: false },
-    { label: 'Funnel de conversión', color: '#ff8940', active: false },
-    { label: 'Demanda no cubierta', color: '#e44258', active: false },
+  tags: Tag[] = [ // Translated labels
+    { label: 'Technical Analysis', color: '#6161ff', active: true },
+    { label: 'Competitor Benchmarking', color: '#9450fd', active: false },
+    { label: 'Market Analysis', color: '#00c875', active: false },
+    { label: 'UX / Accessibility', color: '#3ac9ff', active: false },
+    { label: 'Conversion Funnel', color: '#ff8940', active: false },
+    { label: 'Unmet Demand', color: '#e44258', active: false },
   ];
 
   loading = false;
-  loadingSteps = [
-    'Leyendo y estructurando la información disponible…',
-    'Buscando patrones relevantes en fuentes internas y externas…',
-    'Analizando contexto, relaciones y posibles interpretaciones…',
-    'Procesando datos y generando conexiones semánticas…',
-    'Filtrando información irrelevante y priorizando señales importantes…',
-    'Generando reporte',
+  loadingSteps = [ // Translated messages
+    'Reading and structuring available information…',
+    'Searching for relevant patterns in internal and external sources…',
+    'Analyzing context, relationships, and possible interpretations…',
+    'Processing data and generating semantic connections…',
+    'Filtering irrelevant information and prioritizing important signals…',
+    'Generating report',
   ];
 
   currentStep = 0;
@@ -72,9 +72,9 @@ export class CoreComponent {
 
     const payload = {
       // clientType: this.mode,
-      // clientName: this.mode === 'actual' ? this.form.value.clientName : null,
+      // clientName: this.mode === 'current' ? this.form.value.clientName : null, // Translated 'actual' to 'current'
       userMessage: this.form.value.message,
-      enrichFromChroma: this.mode === 'actual' ? true : false,
+      enrichFromChroma: this.mode === 'current' ? true : false, // Translated 'actual' to 'current'
       // tags: this.tags.filter((t) => t.active).map((t) => t.label),
     };
 

@@ -9,23 +9,25 @@
       <div class="online-dot"></div>
     </div>
 
-    <div class="gen-label">Brian trabajando</div>
-    <div class="gen-title">Generando propuesta...</div>
+    <div class="gen-label">Brian working</div>
+    <div class="gen-title">Generating proposal...</div>
     <div class="gen-sub"></div>
 
     <div class="gen-card">
       <div class="gen-progress-header">
-        <span class="gen-progress-label">Progreso general</span>
+        <span class="gen-progress-label">Overall progress</span>
         <span class="gen-pct">{{ progress }}%</span>
       </div>
 
       <div class="gen-track">
         <div class="gen-fill" [style.width.%]="progress"></div>
       </div>
+
       <div class="gen-detail">
-        Ejecutando — {{ completedSteps }} de {{ STEPS.length }} completados
+        Running — {{ completedSteps }} of {{ STEPS.length }} completed
       </div>
     </div>
+
     <ng-container *ngIf="!hasReport; else report">
       <div class="gen-steps">
         <ng-container *ngFor="let step of STEPS">
@@ -53,9 +55,11 @@
                     />
                   </svg>
                 </div>
+
                 <div *ngIf="step.status === 'running'">
                   <brian-spinner></brian-spinner>
                 </div>
+
                 <div class="waiting" *ngIf="step.status == 'waiting'">
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                     <circle
@@ -79,19 +83,18 @@
                 <div class="title">{{ step.name }}</div>
                 <div class="desc">{{ step.desc }}</div>
               </div>
-              <span class="step-badge badge-done" *ngIf="step.status === 'done'"
-                >Completado</span
-              >
-              <span
-                class="step-badge badge-running"
-                *ngIf="step.status === 'running'"
-                >En curso</span
-              >
-              <span
-                class="step-badge badge-waiting"
-                *ngIf="step.status === 'waiting'"
-                >En espera</span
-              >
+
+              <span class="step-badge badge-done" *ngIf="step.status === 'done'">
+                Completed
+              </span>
+
+              <span class="step-badge badge-running" *ngIf="step.status === 'running'">
+                In progress
+              </span>
+
+              <span class="step-badge badge-waiting" *ngIf="step.status === 'waiting'">
+                Waiting
+              </span>
             </div>
           </div>
         </ng-container>
@@ -101,7 +104,6 @@
 </div>
 
 <ng-template #report>
-  <!-- <ngx-json-viewer [json]="data"></ngx-json-viewer -->
   <ng-container *ngIf="data$ | async as data">
     <div class="analysis-page">
       <!-- HERO -->
@@ -201,7 +203,7 @@
         </div>
       </section>
 
-      <!-- USER REQUESTS -->
+      <!-- USER FEEDBACK -->
       <section class="panel" *ngIf="data?.payload?.userRequests?.length">
         <div class="panel-title">User Feedback</div>
 

@@ -21,11 +21,12 @@
         <input
           id="tpl-search-input"
           type="text"
-          placeholder="Buscar template..."
+          placeholder="Search template..."
           oninput="filterTemplates()"
         />
       </div>
     </div>
+
     <div class="tpl-toprow-right">
       <button class="btn-filter" id="btn-sort" onclick="toggleSort()">
         <svg viewBox="0 0 16 16" fill="none">
@@ -36,8 +37,9 @@
             stroke-linecap="round"
           />
         </svg>
-        Ordenar
+        Sort
       </button>
+
       <button
         class="btn-filter has-filters"
         id="btn-filter"
@@ -52,9 +54,10 @@
             stroke-linejoin="round"
           />
         </svg>
-        Filtrar
+        Filter
         <span class="filter-dot"></span>
       </button>
+
       <button class="btn-new-tpl" onclick="openNewTemplateModal()">
         <svg viewBox="0 0 16 16" fill="none" style="width: 13px; height: 13px">
           <path
@@ -64,30 +67,28 @@
             stroke-linecap="round"
           />
         </svg>
-        Nuevo template
+        New template
       </button>
     </div>
   </div>
 
   <div class="tpl-filters" id="tpl-filters">
-    <span class="fchip active" onclick="setFilter(this, 'all')">Todos</span>
+    <span class="fchip active" onclick="setFilter(this, 'all')">All</span>
     <span class="fchip" onclick="setFilter(this, 'ecommerce')">Ecommerce</span>
     <span class="fchip" onclick="setFilter(this, 'b2b')">B2B</span>
     <span class="fchip" onclick="setFilter(this, 'saas')">SaaS</span>
-    <span class="fchip" onclick="setFilter(this, 'ux')">UX / Diseño</span>
+    <span class="fchip" onclick="setFilter(this, 'ux')">UX / Design</span>
     <span class="fchip-sep"></span>
-    <span class="fchip" onclick="setFilter(this, 'nuevo')">Nuevo cliente</span>
+    <span class="fchip" onclick="setFilter(this, 'nuevo')">New client</span>
     <span class="fchip" onclick="setFilter(this, 'actual')"
-      >Cliente actual</span
+      >Existing client</span
     >
   </div>
 
   <div class="tpl-empty" *ngIf="!filteredTemplates.length">
     <div class="tpl-empty-icon">🔍</div>
 
-    <div class="tpl-empty-msg">
-      No se encontraron templates con ese criterio.
-    </div>
+    <div class="tpl-empty-msg">No templates found matching your criteria.</div>
   </div>
 
   <div class="tpl-grid" *ngIf="filteredTemplates.length">
@@ -139,9 +140,11 @@
       </div>
 
       <div class="tpl-card-foot">
-        <button class="tpl-btn-ver" (click)="verTemplate(t.template)">Ver</button>
+        <button class="tpl-btn-ver" (click)="verTemplate(t.template)">
+          View
+        </button>
 
-        <button class="tpl-btn-dup">Duplicar</button>
+        <button class="tpl-btn-dup">Duplicate</button>
       </div>
     </div>
   </div>

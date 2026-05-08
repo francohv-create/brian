@@ -24,19 +24,19 @@ export class HeaderBoardComponent {
 
     return [
       { label: 'TOTAL', value: total, color: 'text-gray-400' },
-      { label: 'ENVIADAS', value: get('create'), color: 'text-blue-500' },
+      { label: 'Created', value: get('create'), color: 'text-blue-500' },
       {
-        label: 'EVALUACIÓN',
+        label: 'In evaluation',
         value: get('in-progress'),
         color: 'text-yellow-500',
       },
       {
-        label: 'NEGOCIACIÓN',
+        label: 'Negotiation',
         value: get('negotiation'),
         color: 'text-orange-500',
       },
-      { label: 'APROBADAS', value: get('approved'), color: 'text-green-500' },
-      { label: 'RECHAZADAS', value: get('rejected'), color: 'text-red-500' },
+      { label: 'Approved', value: get('approved'), color: 'text-green-500' },
+      { label: 'Rejected', value: get('rejected'), color: 'text-red-500' },
     ];
   }
 }

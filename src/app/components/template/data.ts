@@ -4,76 +4,76 @@ export const TEMPLATES_DATA = [
     template: 1,
     icon: '🛒',
     iconBg: 'linear-gradient(135deg,#c8ff9e,#a8f06e)',
-    name: 'Ecommerce / Retail Digital',
-    category: 'Ecommerce · Argentina',
-    desc: 'Detecta oportunidades para mejorar conversión, experiencia de compra, performance, confianza, medios de pago locales y retención.',
+    name: 'Ecommerce / Digital Retail',
+    category: 'Ecommerce · Argentina', // Keeping Argentina as it's a country name
+    desc: 'Identifies opportunities to improve conversion, shopping experience, performance, trust, local payment methods, and retention.',
     tags: [
       { l: 'Ecommerce', c: 'tt-mint' },
-      { l: 'Conversión', c: 'tt-violet' },
+      { l: 'Conversion', c: 'tt-violet' },
       { l: 'Mobile', c: 'tt-sky' },
-      { l: 'Argentina', c: 'tt-orange' },
+      { l: 'Argentina', c: 'tt-orange' }, // Keeping Argentina as it's a country name
     ],
     fields: [
-      { label: 'País', val: 'Argentina' },
-      { label: 'Última edición', val: 'Hace 2 días' },
-      { label: 'Hallazgos', val: '5–8' },
-      { label: 'Recomendaciones', val: '3–5' },
+      { label: 'Country', val: 'Argentina' },
+      { label: 'Last edited', val: '2 days ago' },
+      { label: 'Findings', val: '5–8' },
+      { label: 'Recommendations', val: '3–5' },
     ],
-    filters: ['ecommerce', 'actual'],
+    filters: ['ecommerce', 'current'], // Translated 'actual' to 'current'
     detail: {
-      aplica: [
-        'La empresa vende productos online.',
-        'Hay catálogo, carrito, checkout o medios de pago.',
-        'El sitio muestra productos, precios, envíos, promociones o cuotas.',
-        'Usa plataformas como VTEX, Shopify, Tiendanube, WooCommerce o Magento.',
+      aplica: [ // "Applies to"
+        'The company sells products online.',
+        'There is a catalog, shopping cart, checkout, or payment methods.',
+        'The site displays products, prices, shipping, promotions, or installments.',
+        'Uses platforms like VTEX, Shopify, Tiendanube, WooCommerce, or Magento.',
       ],
-      no_aplica: [
-        'La web solo captura leads B2B.',
-        'No hay flujo de compra directo.',
-        'El producto vendido es software empresarial o servicios consultivos.',
+      no_aplica: [ // "Does not apply to"
+        'The website only captures B2B leads.',
+        'There is no direct purchase flow.',
+        'The product sold is enterprise software or consulting services.',
       ],
-      dimensiones: [
+      dimensiones: [ // "Dimensions"
         {
-          name: 'Experiencia de compra',
+          name: 'Shopping experience',
           items:
-            'Clics hasta agregar al carrito · Pasos del checkout · Checkout como invitado · Claridad de costos de envío · Política de cambios y devoluciones.',
+            'Clicks to add to cart · Checkout steps · Guest checkout · Clarity of shipping costs · Exchange and return policy.',
         },
         {
-          name: 'Conversión',
+          name: 'Conversion',
           items:
-            'Visibilidad de CTAs · Fricciones en el formulario · Mensajes de confianza · Cuotas y promociones visibles · Recuperación de carrito abandonado.',
+            'CTA visibility · Friction in the form · Trust messages · Visible installments and promotions · Abandoned cart recovery.',
         },
         {
           name: 'Mobile',
           items:
-            'Experiencia mobile-first · Legibilidad de cards de producto · Sticky CTA · Facilidad para filtrar · Performance en 4G.',
+            'Mobile-first experience · Product card readability · Sticky CTA · Easy filtering · 4G performance.',
         },
         {
-          name: 'Performance técnica',
+          name: 'Technical performance',
           items:
-            'Core Web Vitals · Peso de imágenes · Lazy loading · Errores en flujo crítico · Tiempo de carga en PDP y checkout.',
+            'Core Web Vitals · Image weight · Lazy loading · Errors in critical flow · Loading time on PDP and checkout.',
         },
         {
           name: 'Accesibilidad',
           items:
-            'Contraste en botones · Labels en formularios · Navegación por teclado · Alt text en imágenes · Estados de error comprensibles.',
+            'Button contrast · Form labels · Keyboard navigation · Alt text on images · Understandable error states.',
         },
         {
-          name: 'Pagos & logística ARG',
+          name: 'Payments & logistics ARG',
           items:
-            'Mercado Pago, MODO, Transferencia · Cuotas sin interés · Pago Fácil / Rapipago · Andreani, OCA, Correo Argentino · Cálculo de envío por CP.',
+            'Mercado Pago, MODO, Transfer · Interest-free installments · Pago Fácil / Rapipago · Andreani, OCA, Correo Argentino · Shipping calculation by postal code.',
         },
         {
           name: 'Retención',
           items:
-            'Recomendaciones de productos · Programa de fidelidad · Cross-sell / upsell · Email, WhatsApp o push post-compra · Personalización para cliente recurrente.',
+            'Product recommendations · Loyalty program · Cross-sell / upsell · Email, WhatsApp or post-purchase push · Personalization for recurring customers.',
         },
       ],
-      output: { hallazgos: '5–8', recomendaciones: '3–5' },
-      competidores:
-        'Mercado Libre, Frávega, Musimundo, Farmacity, Jumbo, Tiendanube — elegir 3 según categoría real del target.',
-      fuentes:
-        'Sitio web · PageSpeed Insights · Google Trends · CACE · Reviews de Google · App Store/Play Store · Reddit r/argentina.',
+      output: { hallazgos: '5–8', recomendaciones: '3–5' }, // "findings", "recommendations"
+      competidores: // "Competitors"
+        'Mercado Libre, Fravega, Musimundo, Farmacity, Jumbo, Tiendanube — choose 3 based on actual target category.',
+      fuentes: // "Sources"
+        'Website · PageSpeed Insights · Google Trends · CACE · Google Reviews · App Store/Play Store · Reddit r/argentina.',
     },
   },
   {
@@ -81,42 +81,42 @@ export const TEMPLATES_DATA = [
     icon: '🏢',
     template: 2,
     iconBg: 'linear-gradient(135deg,#f2e3ff,#e0ccf5)',
-    name: 'Expansión B2B mayorista',
-    category: 'B2B · Cliente nuevo',
-    desc: 'Estructura una propuesta de plataforma mayorista para retailers que quieren habilitar ventas B2B con catálogo y precios diferenciados.',
+    name: 'Wholesale B2B Expansion',
+    category: 'B2B · New Client',
+    desc: 'Structures a wholesale platform proposal for retailers looking to enable B2B sales with differentiated catalogs and pricing.',
     tags: [
       { l: 'B2B', c: 'tt-lav' },
-      { l: 'Mayorista', c: 'tt-gray' },
-      { l: 'Expansión', c: 'tt-violet' },
+      { l: 'Wholesale', c: 'tt-gray' },
+      { l: 'Expansion', c: 'tt-violet' },
     ],
     fields: [
       { label: 'Industria', val: 'Retail / B2B' },
-      { label: 'Última edición', val: 'Hace 5 días' },
-      { label: 'Páginas', val: '14–18' },
-      { label: 'Tipo', val: 'Cliente nuevo' },
+      { label: 'Last edited', val: '5 days ago' },
+      { label: 'Pages', val: '14–18' },
+      { label: 'Type', val: 'New Client' },
     ],
-    filters: ['b2b', 'nuevo'],
+    filters: ['b2b', 'new'], // Translated 'nuevo' to 'new'
   },
   {
     id: 3,
     template: 3,
     icon: '🔍',
     iconBg: 'linear-gradient(135deg,#edf0ff,#d8e2ff)',
-    name: 'Auditoría UX & rediseño',
-    category: 'UX / Diseño · Cliente actual',
-    desc: 'Analiza la experiencia del usuario actual, detecta puntos de abandono y presenta un plan de rediseño por etapas con ROI estimado.',
+    name: 'UX Audit & Redesign',
+    category: 'UX / Design · Current Client',
+    desc: 'Analyzes current user experience, identifies abandonment points, and presents a phased redesign plan with estimated ROI.',
     tags: [
       { l: 'UX', c: 'tt-sky' },
-      { l: 'Rediseño', c: 'tt-violet' },
+      { l: 'Redesign', c: 'tt-violet' },
       { l: 'Audit', c: 'tt-gray' },
     ],
     fields: [
-      { label: 'Industria', val: 'Transversal' },
-      { label: 'Última edición', val: 'Hace 1 semana' },
-      { label: 'Páginas', val: '10–14' },
-      { label: 'Tipo', val: 'Cliente actual' },
+      { label: 'Industry', val: 'Cross-sector' },
+      { label: 'Last edited', val: '1 week ago' },
+      { label: 'Pages', val: '10–14' },
+      { label: 'Type', val: 'Current Client' },
     ],
-    filters: ['ux', 'actual'],
+    filters: ['ux', 'current'], // Translated 'actual' to 'current'
   },
   // {
   //   id: 4,
