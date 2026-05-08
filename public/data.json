@@ -8,7 +8,7 @@
         "title": "Customer benefits and points system",
         "description": "Design and implementation of a loyalty platform integrated with e-commerce and physical stores to improve retention and repurchase.",
         "assignee": "Juan Pérez",
-        "client": "Deprati"
+        "client": "De Prati"
       }
     ]
   },
@@ -34,7 +34,7 @@
         "title": "Transactional risk analysis system",
         "description": "Implementation of intelligent rules and automated monitoring for early detection of suspicious operations.",
         "assignee": "María Rodríguez",
-        "client": "Safescore"
+        "client": "Safecore"
       }
     ]
   },
@@ -60,7 +60,7 @@
         "title": "Collaborative corporate purchasing portal",
         "description": "Development of a digital ecosystem for supplier management, tenders, and centralized corporate purchasing.",
         "assignee": "María Rodríguez",
-        "client": "Deprati"
+        "client": "De Prati"
       }
     ]
   }

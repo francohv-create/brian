@@ -9,11 +9,11 @@
       <div class="online-dot"></div>
     </div>
 
-    <div class="gen-label">Brian working</div>
-    <div class="gen-title">Generating proposal...</div>
+    <div class="gen-label">{{ hasReport ? 'Brian · finished' : 'Brian working' }}</div>
+    <div class="gen-title">{{ hasReport ? 'Proposal generated' : 'Generating proposal...' }}</div>
     <div class="gen-sub"></div>
 
-    <div class="gen-card">
+    <div class="gen-card" *ngIf="!hasReport">
       <div class="gen-progress-header">
         <span class="gen-progress-label">Overall progress</span>
         <span class="gen-pct">{{ progress }}%</span>
@@ -110,7 +110,7 @@
       <section class="hero">
         <div class="hero-left">
           <div class="eyebrow">
-            {{ data?.action || "Analysis" }}
+            Competitive Analysis Results
           </div>
 
           <h1 style="font-size: 14px">
@@ -118,7 +118,7 @@
           </h1>
 
           <p>
-            {{ data?.payload?.industry || "Unknown industry" }}
+            Industry: {{ data?.payload?.industry || "Unknown industry" }}
           </p>
         </div>
 

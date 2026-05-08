@@ -23,20 +23,20 @@ export class HeaderBoardComponent {
     );
 
     return [
-      { label: 'TOTAL', value: total, color: 'text-gray-400' },
-      { label: 'Created', value: get('create'), color: 'text-blue-500' },
+      { label: 'TOTAL', value: total, color: 'var(--graphite)' },
+      { label: 'Created', value: get('create'), color: '#0070a8' },
       {
         label: 'In evaluation',
         value: get('in-progress'),
-        color: 'text-yellow-500',
+        color: '#b85a00',
       },
       {
         label: 'Negotiation',
         value: get('negotiation'),
-        color: 'text-orange-500',
+        color: '#6161ff',
       },
-      { label: 'Approved', value: get('approved'), color: 'text-green-500' },
-      { label: 'Rejected', value: get('rejected'), color: 'text-red-500' },
+      { label: 'Approved', value: get('approved'), color: '#007a4d' },
+      { label: 'Rejected', value: get('rejected'), color: '#c0182f' },
     ];
   }
 }

@@ -269,14 +269,14 @@ brian-spinner {
 }
 
 .json-viewer {
-  background: #0d1117;
-  color: #d6e2ff;
+  background: var(--surf);
+  color: var(--tp);
   padding: 20px;
   border-radius: 12px;
   overflow: auto;
   font-size: 13px;
   line-height: 1.5;
-  border: 1px solid #2a2f45;
+  border: 1px solid var(--border);
   max-height: 700px;
 }
 
@@ -293,7 +293,7 @@ ngx-json-viewer {
 
 .analysis-page {
   padding: 24px 0;
-  color: white;
+  color: var(--tp);
   max-width: 1400px;
   margin: auto;
 }
@@ -305,8 +305,10 @@ ngx-json-viewer {
   margin-bottom: 24px;
   padding: 28px;
   border-radius: 24px;
-  background: linear-gradient(135deg, #161b2e, #0f1320);
-  border: 1px solid #2a3150;
+  background: var(--glass);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
 }
 
 .hero h1 {
@@ -315,13 +317,15 @@ ngx-json-viewer {
 }
 
 .eyebrow {
-  color: #8ea2ff;
+  color: var(--violet);
   font-size: 13px;
   text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.06em;
 }
 
 .hero p {
-  color: #9aa4c7;
+  color: var(--tm);
 }
 
 .hero-right {
@@ -331,40 +335,44 @@ ngx-json-viewer {
 
 .metric-card {
   min-width: 130px;
-  background: #111522;
-  border: 1px solid #2d3557;
+  background: var(--canvas);
+  border: 1px solid var(--border);
   border-radius: 18px;
   padding: 18px;
 }
 
 .metric-card span {
   display: block;
-  color: #8992b4;
+  color: var(--tm);
   font-size: 12px;
   margin-bottom: 8px;
 }
 
 .metric-card strong {
   font-size: 24px;
+  color: var(--tp);
 }
 
 .panel {
   margin-bottom: 20px;
-  background: #131826;
-  border: 1px solid #262e49;
+  background: var(--glass);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--border);
   border-radius: 20px;
   padding: 24px;
+  box-shadow: var(--shadow-sm);
 }
 
 .panel-title {
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 20px;
+  color: var(--tp);
 }
 
 .summary {
   line-height: 1.8;
-  color: #c7d0ec;
+  color: var(--tm);
 }
 
 .grid-cards {
@@ -374,27 +382,35 @@ ngx-json-viewer {
 }
 
 .feature-card {
-  background: #0d111c;
-  border: 1px solid #242c48;
+  background: var(--canvas);
+  border: 1px solid var(--border);
   border-radius: 18px;
   padding: 18px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.feature-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .feature-title {
   font-weight: 600;
   margin-bottom: 10px;
+  color: var(--tp);
 }
 
 .feature-desc {
-  color: #b7c1df;
+  color: var(--tm);
   line-height: 1.6;
   font-size: 14px;
 }
 
 .feature-source {
   margin-top: 14px;
-  color: #7280a7;
+  color: var(--tm);
   font-size: 12px;
+  opacity: 0.7;
 }
 
 .badge {
@@ -402,9 +418,10 @@ ngx-json-viewer {
   margin-bottom: 12px;
   padding: 6px 10px;
   border-radius: 999px;
-  background: #1f2947;
-  color: #8fb0ff;
+  background: rgba(97, 97, 255, 0.1);
+  color: var(--violet);
   font-size: 12px;
+  font-weight: 500;
 }
 
 .request-row,
@@ -413,7 +430,7 @@ ngx-json-viewer {
   justify-content: space-between;
   gap: 20px;
   padding: 18px 0;
-  border-top: 1px solid #242c48;
+  border-top: 1px solid var(--border);
 }
 
 .request-row:first-child,
@@ -424,7 +441,7 @@ ngx-json-viewer {
 
 .request-content,
 .standard-desc {
-  color: #c6d0ea;
+  color: var(--tm);
 }
 
 .request-meta {
@@ -443,18 +460,18 @@ ngx-json-viewer {
 }
 
 .sentiment {
-  background: #3b2222;
-  color: #ff9898;
+  background: rgba(228, 66, 88, 0.1);
+  color: #c0182f;
 }
 
 .status.missing {
-  background: #422222;
-  color: #ff9090;
+  background: rgba(228, 66, 88, 0.1);
+  color: #c0182f;
 }
 
 .status.partial {
-  background: #46391f;
-  color: #ffca7a;
+  background: rgba(255, 137, 64, 0.12);
+  color: #b85a00;
 }
 
 .sources {
@@ -464,8 +481,13 @@ ngx-json-viewer {
 }
 
 .sources a {
-  color: #7da2ff;
+  color: var(--violet);
   text-decoration: none;
+  transition: opacity 0.15s;
+}
+
+.sources a:hover {
+  opacity: 0.8;
 }
 
 .raw-json {
@@ -474,14 +496,16 @@ ngx-json-viewer {
 
 .raw-json summary {
   cursor: pointer;
+  color: var(--tp);
 }
 
 .raw-json pre {
   margin-top: 16px;
-  background: #0b0f18;
-  border: 1px solid #222b46;
+  background: var(--surf);
+  border: 1px solid var(--border);
   border-radius: 16px;
   padding: 18px;
   overflow: auto;
   max-height: 600px;
+  color: var(--tp);
 }

@@ -203,6 +203,8 @@
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 .tpl-card::before {
   content: "";
@@ -322,6 +324,7 @@
   gap: 6px;
   flex-wrap: wrap;
   margin-bottom: 16px;
+  min-height: 46px;
 }
 .tpl-tag {
   font-size: 10px;
@@ -422,6 +425,7 @@
   gap: 8px;
   border-top: 1px solid rgba(0, 0, 0, 0.06);
   padding-top: 13px;
+  margin-top: auto;
 }
 .tpl-btn-ver {
   font-family: "Poppins", sans-serif;

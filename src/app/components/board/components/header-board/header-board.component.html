@@ -1,6 +1,6 @@
 <div class="header-board">
   <div class="stat" *ngFor="let s of stats">
-    <div class="value px-2 py-1" [ngClass]="s.color">
+    <div class="value" [style.color]="s.color">
       {{ s.value }}
     </div>
     <div class="label">

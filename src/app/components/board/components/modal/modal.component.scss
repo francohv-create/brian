@@ -1,7 +1,7 @@
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(15, 23, 42, 0.55);
+  background: rgba(28, 29, 46, 0.3);
   backdrop-filter: blur(4px);
 
   display: flex;
@@ -15,14 +15,14 @@
   width: 100%;
   max-width: 520px;
 
-  background: #ffffff;
+  background: var(--glass);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--border);
   border-radius: 24px;
 
   padding: 24px;
 
-  box-shadow:
-    0 20px 25px -5px rgb(0 0 0 / 0.1),
-    0 10px 10px -5px rgb(0 0 0 / 0.04);
+  box-shadow: var(--shadow-lg);
 
   animation: modalIn 0.2s ease;
 }
@@ -32,9 +32,10 @@
 
   h2 {
     margin: 0;
-    font-size: 24px;
+    font-family: "Poppins", sans-serif;
+    font-size: 22px;
     font-weight: 700;
-    color: #111827;
+    color: var(--tp);
   }
 }
 
@@ -50,21 +51,24 @@
   gap: 8px;
 
   label {
-    font-size: 14px;
+    font-family: "Poppins", sans-serif;
+    font-size: 13px;
     font-weight: 600;
-    color: #374151;
+    color: var(--tp);
   }
 
   input,
   textarea {
     width: 100%;
+    font-family: "Poppins", sans-serif;
 
-    border: 1px solid #d1d5db;
+    border: 1.5px solid var(--border);
     border-radius: 14px;
 
     padding: 14px 16px;
 
     font-size: 14px;
+    color: var(--tp);
 
     outline: none;
 
@@ -73,8 +77,8 @@
       box-shadow 0.2s;
 
     &:focus {
-      border-color: #6161ff;
-      box-shadow: 0 0 0 4px rgba(97, 97, 255, 0.12);
+      border-color: var(--violet);
+      box-shadow: 0 0 0 3px rgba(97, 97, 255, 0.12);
     }
   }
 
@@ -92,12 +96,13 @@
 }
 
 .btn {
+  font-family: "Poppins", sans-serif;
   border: none;
-  border-radius: 14px;
+  border-radius: 160px;
 
-  padding: 12px 18px;
+  padding: 10px 20px;
 
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
 
   cursor: pointer;
@@ -112,13 +117,15 @@
 }
 
 .btn-primary {
-  background: #6161ff;
+  background: linear-gradient(135deg, #6161ff, #9450fd);
   color: white;
+  box-shadow: 0 3px 12px rgba(97, 97, 255, 0.3);
 }
 
 .btn-secondary {
-  background: #eef2ff;
-  color: #4338ca;
+  background: var(--surf);
+  color: var(--violet);
+  border: 1px solid var(--border);
 }
 
 @keyframes modalIn {
@@ -134,8 +141,8 @@
 }
 
 .error {
-  color: red;
+  color: #e44258;
   font-family: "Poppins", sans-serif;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
 }
