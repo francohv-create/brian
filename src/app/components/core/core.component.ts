@@ -74,14 +74,14 @@ export class CoreComponent {
       // clientType: this.mode,
       // clientName: this.mode === 'actual' ? this.form.value.clientName : null,
       userMessage: this.form.value.message,
-
+      enrichFromChroma: this.mode === 'actual' ? true : false,
       // tags: this.tags.filter((t) => t.active).map((t) => t.label),
     };
 
     this.loading = true;
     this.currentStep = 0;
     // this.runLoadingSteps();
-    this.competitiveAnalysisService.getCompetitiveAnalysis(payload).subscribe();
+  this.competitiveAnalysisService.getCompetitiveAnalysis(payload);
     setTimeout(() => {
       this.router.navigate(['/report']);
     }, 1000);

@@ -18,17 +18,36 @@ export class CompetitiveAnalysisService {
 
   constructor(private http: HttpClient) {}
 
-  getCompetitiveAnalysis(payload: any): Observable<CompetitiveAnalysis> {
-    return this.http
-      .post<CompetitiveAnalysis>(
-        'http://localhost:8080/api/competitive-analysis',
-        payload,
-      )
-      .pipe(
-        tap((response) => {
-          this.analysisSubject.next(response);
-        }),
-      );
+  async getCompetitiveAnalysis(payload: any) {
+    const response = await fetch(
+      'http://localhost:8080/api/competitive-analysis',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'text/event-stream',
+        },
+        body: JSON.stringify(payload),
+      },
+    );
+
+    const text = await response.text();
+
+    const lines = text.split('\n');
+
+    for (const line of lines) {
+      if (!line.startsWith('data:')) continue;
+
+      const content = line.replace('data:', '').trim();
+
+      if (content === '[DONE]') break;
+
+      const parsed = JSON.parse(content);
+
+      console.log(parsed);
+
+      this.analysisSubject.next(parsed);
+    }
   }
   // getCompetitiveAnalysis(): Observable<any> {
   //   const mockResponse = {
