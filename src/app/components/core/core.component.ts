@@ -81,7 +81,7 @@ export class CoreComponent {
     this.loading = true;
     this.currentStep = 0;
     // this.runLoadingSteps();
-    this.competitiveAnalysisService.getCompetitiveAnalysis().subscribe();
+    this.competitiveAnalysisService.getCompetitiveAnalysis(payload).subscribe();
     setTimeout(() => {
       this.router.navigate(['/report']);
     }, 1000);

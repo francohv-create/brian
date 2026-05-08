@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { CompetitiveAnalysisService } from '../../services/competitve-analisys.service';
 import { filter, Observable, Subscription, take } from 'rxjs';
+import { CompetitiveAnalysisService } from '../../services/competitve-analisys.service';
 
 type StepStatus = 'done' | 'running' | 'waiting';
 
@@ -54,8 +54,6 @@ export class AnalizeComponent implements OnInit, OnDestroy {
     this.data$ = this.competitiveAnalysisService.analysis$;
 
     this.startFakeAnalysis();
-
-    this.competitiveAnalysisService.getCompetitiveAnalysis().subscribe();
 
     this.subscription = this.competitiveAnalysisService.analysis$
       .pipe(
