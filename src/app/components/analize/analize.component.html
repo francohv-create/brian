@@ -1,4 +1,4 @@
-<ng-container *ngIf="hasReport; else proposal">
+<ng-container *ngIf="!hasReport; else proposal">
   <brian-progress-bar></brian-progress-bar>
 </ng-container>
 <ng-template #proposal>
