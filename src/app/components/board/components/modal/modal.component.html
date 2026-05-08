@@ -2,12 +2,12 @@
   <div class="modal" (click)="$event.stopPropagation()">
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <div class="modal-header">
-        <h2>Nueva propuesta</h2>
+        <h2>New proposal</h2>
       </div>
 
       <div class="modal-body">
         <div class="form-group">
-          <label>Título</label>
+          <label>Title</label>
 
           <input type="text" formControlName="title" />
 
@@ -15,12 +15,12 @@
             class="error"
             *ngIf="form.get('title')?.invalid && form.get('title')?.touched"
           >
-            El título es obligatorio
+            Title is required
           </small>
         </div>
 
         <div class="form-group">
-          <label>Descripción</label>
+          <label>Description</label>
 
           <textarea rows="4" formControlName="description"></textarea>
 
@@ -31,12 +31,12 @@
               form.get('description')?.touched
             "
           >
-            La descripción es obligatoria
+            Description is required
           </small>
         </div>
 
         <div class="form-group">
-          <label>Cliente</label>
+          <label>Client</label>
 
           <input type="text" formControlName="client" />
 
@@ -44,17 +44,17 @@
             class="error"
             *ngIf="form.get('client')?.invalid && form.get('client')?.touched"
           >
-            El cliente es obligatorio
+            Client is required
           </small>
         </div>
       </div>
 
       <div class="modal-footer">
         <button class="btn btn-secondary" type="button" (click)="onClose()">
-          Cancelar
+          Cancel
         </button>
 
-        <button class="btn btn-primary" type="submit">Guardar</button>
+        <button class="btn btn-primary" type="submit">Save</button>
       </div>
     </form>
   </div>
