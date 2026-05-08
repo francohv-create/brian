@@ -19,6 +19,8 @@ export class CompetitiveAnalysisService {
   constructor(private http: HttpClient) {}
 
   async getCompetitiveAnalysis(payload: any) {
+    this.analysisSubject.next(null);
+
     const response = await fetch(
       'http://localhost:8080/api/competitive-analysis',
       {

@@ -366,6 +366,12 @@ brian-spinner {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
+  align-items: stretch;
+}
+
+.report-duo > .report-panel {
+  display: flex;
+  flex-direction: column;
 }
 
 /* Feature cards inside panels */
