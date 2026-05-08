@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { filter, Observable, Subscription, take } from 'rxjs';
 import { CompetitiveAnalysisService } from '../../services/competitve-analisys.service';
 
@@ -48,7 +48,7 @@ export class AnalizeComponent implements OnInit, OnDestroy {
     },
   ];
 
-  constructor(private competitiveAnalysisService: CompetitiveAnalysisService) {}
+  constructor(private competitiveAnalysisService: CompetitiveAnalysisService, private el: ElementRef) {}
 
   ngOnInit(): void {
     this.data$ = this.competitiveAnalysisService.analysis$;
@@ -108,5 +108,41 @@ export class AnalizeComponent implements OnInit, OnDestroy {
 
   get completedSteps(): number {
     return this.currentStep;
+  }
+
+  async exportPdf(): Promise<void> {
+    const { default: html2canvas } = await import('html2canvas');
+    const { default: jsPDF } = await import('jspdf');
+
+    const element = this.el.nativeElement.querySelector('.analysis-page');
+    if (!element) return;
+
+    const canvas = await html2canvas(element, {
+      scale: 2,
+      useCORS: true,
+      backgroundColor: '#f2f3fa',
+    });
+
+    const imgData = canvas.toDataURL('image/png');
+    const imgWidth = 210;
+    const pageHeight = 297;
+    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+    const pdf = new jsPDF('p', 'mm', 'a4');
+    let heightLeft = imgHeight;
+    let position = 0;
+
+    pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+    heightLeft -= pageHeight;
+
+    while (heightLeft > 0) {
+      position = -(pageHeight - (imgHeight - heightLeft)) ;
+      pdf.addPage();
+      pdf.addImage(imgData, 'PNG', 0, position - (imgHeight - heightLeft - pageHeight), imgWidth, imgHeight);
+      heightLeft -= pageHeight;
+    }
+
+    const siteName = this.el.nativeElement.querySelector('.report-site-name')?.textContent?.trim() || 'report';
+    pdf.save(`${siteName}-analysis.pdf`);
   }
 }
