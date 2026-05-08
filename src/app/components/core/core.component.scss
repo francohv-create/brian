@@ -1,0 +1,152 @@
+.brian-face {
+  img {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.client-input input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  outline: none;
+  transition: 0.2s;
+}
+
+.client-input input:focus {
+  border-color: #6161ff;
+  box-shadow: 0 0 0 3px rgba(97, 97, 255, 0.15);
+}
+
+.send-btn {
+  position: relative;
+  z-index: 2;
+}
+
+.error {
+  color: red;
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  margin: 10px 0;
+}
+
+textarea {
+  height: 150px;
+  transition: height 0.25s ease;
+  overflow-y: auto;
+  resize: none;
+}
+
+textarea.expanded {
+  height: 300px;
+}
+
+textarea::-webkit-scrollbar {
+  width: 6px;
+}
+
+textarea::-webkit-scrollbar-track {
+  background: transparent;
+}
+textarea::-webkit-scrollbar-thumb {
+  background: #c7c7ff;
+  border-radius: 10px;
+}
+
+.hero.loading {
+  opacity: 0.5;
+  pointer-events: none;
+  filter: grayscale(1);
+}
+
+.ai-status {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  gap: 10px;
+  padding: 32px 32px 0;
+  max-width: 880px;
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0;
+}
+
+/* base */
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+/* ✔ ejecutado */
+.dot.done {
+  background: #00c875; /* verde */
+}
+
+/* 🔵 pendiente */
+.dot.pending {
+  background: var(--violet); /* celeste */
+  opacity: 0.4;
+}
+
+/* 🔵 actual */
+.dot.active {
+  background: var(--violet);
+  animation: pulse 1s infinite;
+}
+
+/* textos */
+span.done {
+  color: #00c875;
+}
+
+span.pending {
+  color: var(--violet);
+  opacity: 0.6;
+}
+
+span.active {
+  color: var(--violet);
+  font-weight: 500;
+}
+
+/* spinner alineado */
+brian-spinner {
+  margin-right: 6px;
+}
+
+//SOLO NUEVO DISEÑO
+
+.brian-face {
+  background: none;
+  border: none;
+  img {
+    width: 80px;
+    height: 80px;
+    filter: drop-shadow(0 4px 12px var(--violet));
+  }
+}
+.brian-label {
+  margin-top: 14px;
+}
+
+.brian-title {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.22;
+    letter-spacing: -.02em;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, #1c1d2e 0%, #6161ff 55%, #9450fd 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;}

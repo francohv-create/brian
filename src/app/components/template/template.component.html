@@ -1,0 +1,154 @@
+<div class="tpl-page">
+  <div class="tpl-toprow">
+    <div class="tpl-toprow-left">
+      <div class="tpl-title">Templates</div>
+      <div class="tpl-search">
+        <svg viewBox="0 0 16 16" fill="none">
+          <circle
+            cx="6.5"
+            cy="6.5"
+            r="4.5"
+            stroke="#535768"
+            stroke-width="1.5"
+          />
+          <path
+            d="M10 10l3 3"
+            stroke="#535768"
+            stroke-width="1.5"
+            stroke-linecap="round"
+          />
+        </svg>
+        <input
+          id="tpl-search-input"
+          type="text"
+          placeholder="Buscar template..."
+          oninput="filterTemplates()"
+        />
+      </div>
+    </div>
+    <div class="tpl-toprow-right">
+      <button class="btn-filter" id="btn-sort" onclick="toggleSort()">
+        <svg viewBox="0 0 16 16" fill="none">
+          <path
+            d="M2 4h12M4 8h8M6 12h4"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+          />
+        </svg>
+        Ordenar
+      </button>
+      <button
+        class="btn-filter has-filters"
+        id="btn-filter"
+        onclick="cycleFilter()"
+      >
+        <svg viewBox="0 0 16 16" fill="none">
+          <path
+            d="M2 3h12l-5 6v4l-2-1V9L2 3z"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        Filtrar
+        <span class="filter-dot"></span>
+      </button>
+      <button class="btn-new-tpl" onclick="openNewTemplateModal()">
+        <svg viewBox="0 0 16 16" fill="none" style="width: 13px; height: 13px">
+          <path
+            d="M8 3v10M3 8h10"
+            stroke="white"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+        </svg>
+        Nuevo template
+      </button>
+    </div>
+  </div>
+
+  <div class="tpl-filters" id="tpl-filters">
+    <span class="fchip active" onclick="setFilter(this, 'all')">Todos</span>
+    <span class="fchip" onclick="setFilter(this, 'ecommerce')">Ecommerce</span>
+    <span class="fchip" onclick="setFilter(this, 'b2b')">B2B</span>
+    <span class="fchip" onclick="setFilter(this, 'saas')">SaaS</span>
+    <span class="fchip" onclick="setFilter(this, 'ux')">UX / Diseño</span>
+    <span class="fchip-sep"></span>
+    <span class="fchip" onclick="setFilter(this, 'nuevo')">Nuevo cliente</span>
+    <span class="fchip" onclick="setFilter(this, 'actual')"
+      >Cliente actual</span
+    >
+  </div>
+
+  <div class="tpl-empty" *ngIf="!filteredTemplates.length">
+    <div class="tpl-empty-icon">🔍</div>
+
+    <div class="tpl-empty-msg">
+      No se encontraron templates con ese criterio.
+    </div>
+  </div>
+
+  <div class="tpl-grid" *ngIf="filteredTemplates.length">
+    <div class="tpl-card" *ngFor="let t of filteredTemplates">
+      <div class="tpl-card-head">
+        <div class="tpl-card-identity">
+          <div class="tpl-icon" [style.background]="t.iconBg">
+            {{ t.icon }}
+          </div>
+
+          <div class="tpl-name-wrap">
+            <div class="tpl-name">
+              {{ t.name }}
+            </div>
+
+            <div class="tpl-category">
+              {{ t.category }}
+            </div>
+          </div>
+        </div>
+
+        <div class="tpl-menu" (click)="$event.stopPropagation()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+
+      <div class="tpl-desc">
+        {{ t.desc }}
+      </div>
+
+      <div class="tpl-tags">
+        <span class="tpl-tag" [class]="tag.c" *ngFor="let tag of t.tags">
+          {{ tag.l }}
+        </span>
+      </div>
+
+      <div class="tpl-fields">
+        <div class="tpl-field" *ngFor="let f of t.fields">
+          <div class="tpl-field-label">
+            {{ f.label }}
+          </div>
+
+          <div class="tpl-field-val">
+            {{ f.val }}
+          </div>
+        </div>
+      </div>
+
+      <div class="tpl-card-foot">
+        <button class="tpl-btn-ver" (click)="verTemplate()">Ver</button>
+
+        <button class="tpl-btn-dup">Duplicar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-modal
+  *ngIf="isModalOpen"
+  [template]="selectedTemplate"
+  (close)="closeModal()"
+></app-modal>

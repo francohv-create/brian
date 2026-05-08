@@ -1,0 +1,37 @@
+<div class="topbar">
+  <a href="/">
+    <div class="logo">
+      <div class="logo-mark">
+        <img src="/logo.svg" alt="" />
+      </div>
+      <div class="logo-name">QBrianK</div>
+    </div>
+  </a>
+  <div class="nav">
+    <a
+      class="nav-item"
+      routerLink="/"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      Inicio
+    </a>
+    <a class="nav-item" routerLink="/template" routerLinkActive="active">
+      Template
+    </a>
+    <a class="nav-item" routerLink="/board" routerLinkActive="active">
+      Biblioteca
+    </a>
+  </div>
+  <div class="topbar-right">
+    <button class="btn-primary" *ngIf="isBoard" (click)="openModal()">
+      + Nueva propuesta
+    </button>
+    <div class="avatar">QBK</div>
+  </div>
+</div>
+
+<app-modal
+  *ngIf="showModal"
+  (close)="closeModal()"
+/>

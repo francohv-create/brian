@@ -1,0 +1,67 @@
+[
+  {
+    "id": "create",
+    "title": "Creada",
+    "tickets": [
+      {
+        "id": "task-1",
+        "title": "Sistema de beneficios y puntos para clientes",
+        "description": "Diseño e implementación de una plataforma de fidelización integrada con e-commerce y tiendas físicas para mejorar retención y recompra.",
+        "assignee": "Juan Pérez",
+        "client": "Deprati"
+      }
+    ]
+  },
+  {
+    "id": "in-progress",
+    "title": "En evaluación",
+    "tickets": [
+      {
+        "id": "task-3",
+        "title": "Dashboard predictivo para cadena de suministro",
+        "description": "Desarrollo de panel analítico con métricas en tiempo real y predicción de demanda para optimizar distribución y stock.",
+        "assignee": "Carlos López",
+        "client": "Molinos"
+      }
+    ]
+  },
+  {
+    "id": "negotiation",
+    "title": "Negociación",
+    "tickets": [
+      {
+        "id": "task-4",
+        "title": "Sistema de análisis de riesgo transaccional",
+        "description": "Implementación de reglas inteligentes y monitoreo automatizado para detección temprana de operaciones sospechosas.",
+        "assignee": "María Rodríguez",
+        "client": "Safescore"
+      }
+    ]
+  },
+  {
+    "id": "approved",
+    "title": "Aprobada",
+    "tickets": [
+      {
+        "id": "task-5",
+        "title": "Automatización de trámites y seguimiento",
+        "description": "Creación de una plataforma web para centralizar solicitudes, documentación y seguimiento de procesos ciudadanos.",
+        "assignee": "María Rodríguez",
+        "client": "TeCorresponde"
+      }
+    ]
+  },
+  {
+    "id": "rejected",
+    "title": "Rechazada",
+    "tickets": [
+      {
+        "id": "task-6",
+        "title": "Portal colaborativo de compras corporativas",
+        "description": "Desarrollo de un ecosistema digital para gestión de proveedores, licitaciones y compras empresariales centralizadas.",
+        "assignee": "María Rodríguez",
+        "client": "Deprati"
+      }
+    ]
+  }
+]

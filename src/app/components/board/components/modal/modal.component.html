@@ -1,0 +1,61 @@
+<div class="modal-backdrop" (click)="onClose()">
+  <div class="modal" (click)="$event.stopPropagation()">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="modal-header">
+        <h2>Nueva propuesta</h2>
+      </div>
+
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Título</label>
+
+          <input type="text" formControlName="title" />
+
+          <small
+            class="error"
+            *ngIf="form.get('title')?.invalid && form.get('title')?.touched"
+          >
+            El título es obligatorio
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label>Descripción</label>
+
+          <textarea rows="4" formControlName="description"></textarea>
+
+          <small
+            class="error"
+            *ngIf="
+              form.get('description')?.invalid &&
+              form.get('description')?.touched
+            "
+          >
+            La descripción es obligatoria
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label>Cliente</label>
+
+          <input type="text" formControlName="client" />
+
+          <small
+            class="error"
+            *ngIf="form.get('client')?.invalid && form.get('client')?.touched"
+          >
+            El cliente es obligatorio
+          </small>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" (click)="onClose()">
+          Cancelar
+        </button>
+
+        <button class="btn btn-primary" type="submit">Guardar</button>
+      </div>
+    </form>
+  </div>
+</div>

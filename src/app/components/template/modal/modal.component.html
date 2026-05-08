@@ -1,0 +1,17 @@
+<div class="ver-overlay" id="ver-overlay" onclick="closeVerIfOverlay(event)">
+  <div class="ver-panel" id="ver-panel">
+    <div class="ver-panel-head">
+      <div class="ver-panel-icon" id="ver-icon"></div>
+      <div class="ver-panel-info">
+        <div class="ver-panel-name" id="ver-name"></div>
+        <div class="ver-panel-cat" id="ver-cat"></div>
+      </div>
+      <button class="ver-close" (click)="close.emit()">✕</button>
+    </div>
+    <div class="ver-panel-body" id="ver-body"></div>
+    <div class="ver-panel-foot">
+      <button class="btn-ver-usar" id="btn-ver-usar">Usar template</button>
+      <button class="btn-ver-dup" id="btn-ver-dup">Duplicar</button>
+    </div>
+  </div>
+</div>

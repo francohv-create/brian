@@ -1,0 +1,269 @@
+<ng-container *ngIf="!hasReport">
+  <brian-progress-bar></brian-progress-bar>
+</ng-container>
+
+<div class="gen-screen">
+  <div class="gen-inner">
+    <div class="brian-face">
+      <img src="logo2.svg" alt="" />
+      <div class="online-dot"></div>
+    </div>
+
+    <div class="gen-label">Brian trabajando</div>
+    <div class="gen-title">Generando propuesta...</div>
+    <div class="gen-sub"></div>
+
+    <div class="gen-card">
+      <div class="gen-progress-header">
+        <span class="gen-progress-label">Progreso general</span>
+        <span class="gen-pct">{{ progress }}%</span>
+      </div>
+
+      <div class="gen-track">
+        <div class="gen-fill" [style.width.%]="progress"></div>
+      </div>
+      <div class="gen-detail">
+        Ejecutando — {{ completedSteps }} de {{ STEPS.length }} completados
+      </div>
+    </div>
+    <ng-container *ngIf="!hasReport; else report">
+      <div class="gen-steps">
+        <ng-container *ngFor="let step of STEPS">
+          <div
+            class="gen-step"
+            [ngClass]="
+              step.status === 'done'
+                ? 's-done'
+                : step.status === 'running'
+                  ? 's-running'
+                  : ''
+            "
+          >
+            <div class="step-container">
+              <div class="left-icon">
+                <div class="done" *ngIf="step.status === 'done'">
+                  <svg viewBox="0 0 16 16" fill="none">
+                    <circle cx="8" cy="8" r="6" fill="rgba(0,200,117,.18)" />
+                    <polyline
+                      points="5,8 7,10.5 11,5.5"
+                      stroke="#007a4d"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+                <div *ngIf="step.status === 'running'">
+                  <brian-spinner></brian-spinner>
+                </div>
+                <div class="waiting" *ngIf="step.status == 'waiting'">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <circle
+                      cx="8"
+                      cy="8"
+                      r="6"
+                      stroke="rgba(160,162,180,.5)"
+                      stroke-width="1.5"
+                    />
+                    <path
+                      d="M8 5v3l1.5 1.5"
+                      stroke="rgba(160,162,180,.5)"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </div>
+              </div>
+
+              <div class="content">
+                <div class="title">{{ step.name }}</div>
+                <div class="desc">{{ step.desc }}</div>
+              </div>
+              <span class="step-badge badge-done" *ngIf="step.status === 'done'"
+                >Completado</span
+              >
+              <span
+                class="step-badge badge-running"
+                *ngIf="step.status === 'running'"
+                >En curso</span
+              >
+              <span
+                class="step-badge badge-waiting"
+                *ngIf="step.status === 'waiting'"
+                >En espera</span
+              >
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+<ng-template #report>
+  <!-- <ngx-json-viewer [json]="data"></ngx-json-viewer -->
+  <ng-container *ngIf="data$ | async as data">
+    <div class="analysis-page">
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-left">
+          <div class="eyebrow">
+            {{ data?.action || "Analysis" }}
+          </div>
+
+          <h1>
+            {{ data?.payload?.targetSite || "Unknown target" }}
+          </h1>
+
+          <p>
+            {{ data?.payload?.industry || "Unknown industry" }}
+          </p>
+        </div>
+
+        <div class="hero-right">
+          <div class="metric-card">
+            <span>Confidence</span>
+
+            <strong>
+              {{
+                data?.payload?.industryConfidence
+                  ? (data.payload.industryConfidence * 100 | number: "1.0-0") +
+                    "%"
+                  : "--"
+              }}
+            </strong>
+          </div>
+
+          <div class="metric-card">
+            <span>Tokens</span>
+
+            <strong>
+              {{ data?.payload?.tokensUsed || data?.tokensUsed || "--" }}
+            </strong>
+          </div>
+        </div>
+      </section>
+
+      <!-- SUMMARY -->
+      <section class="panel" *ngIf="data?.payload?.summary">
+        <div class="panel-title">Summary</div>
+
+        <div class="summary">
+          {{ data.payload.summary }}
+        </div>
+      </section>
+
+      <!-- MISSING FEATURES -->
+      <section class="panel" *ngIf="data?.payload?.missingFeatures?.length">
+        <div class="panel-title">Missing Features</div>
+
+        <div class="grid-cards">
+          <div
+            class="feature-card"
+            *ngFor="let feature of data.payload.missingFeatures"
+          >
+            <div class="feature-title">
+              {{ feature?.name || "Unnamed feature" }}
+            </div>
+
+            <div class="feature-desc">
+              {{ feature?.description || "-" }}
+            </div>
+
+            <div class="feature-source" *ngIf="feature?.source">
+              {{ feature.source }}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- COMPETITORS -->
+      <section class="panel" *ngIf="data?.payload?.competitorFeatures?.length">
+        <div class="panel-title">Competitor Features</div>
+
+        <div class="grid-cards">
+          <div
+            class="feature-card"
+            *ngFor="let feature of data.payload.competitorFeatures"
+          >
+            <div class="feature-title">
+              {{ feature?.feature || "-" }}
+            </div>
+
+            <div class="badge">
+              {{ feature?.competitor || "Unknown competitor" }}
+            </div>
+
+            <div class="feature-desc">
+              {{ feature?.description || "-" }}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- USER REQUESTS -->
+      <section class="panel" *ngIf="data?.payload?.userRequests?.length">
+        <div class="panel-title">User Feedback</div>
+
+        <div class="request-row" *ngFor="let req of data.payload.userRequests">
+          <div class="request-content">
+            {{ req?.request || "-" }}
+          </div>
+
+          <div class="request-meta">
+            <span class="sentiment">
+              {{ req?.sentiment || "unknown" }}
+            </span>
+
+            <span class="source">
+              {{ req?.source || "-" }}
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- INDUSTRY STANDARDS -->
+      <section class="panel" *ngIf="data?.payload?.industryStandards?.length">
+        <div class="panel-title">Industry Standards</div>
+
+        <div
+          class="standard-row"
+          *ngFor="let standard of data.payload.industryStandards"
+        >
+          <div>
+            <div class="standard-title">
+              {{ standard?.standard || "-" }}
+            </div>
+
+            <div class="standard-desc">
+              {{ standard?.description || "-" }}
+            </div>
+          </div>
+
+          <div
+            class="status"
+            [class.missing]="standard?.status === 'missing'"
+            [class.partial]="standard?.status === 'partial'"
+          >
+            {{ standard?.status || "-" }}
+          </div>
+        </div>
+      </section>
+
+      <!-- SOURCES -->
+      <section class="panel" *ngIf="data?.payload?.sources?.length">
+        <div class="panel-title">Sources</div>
+
+        <div class="sources">
+          <a
+            *ngFor="let source of $any(data?.payload?.sources)"
+            [href]="$any(source).url"
+            target="_blank"
+          >
+            {{ $any(source).title || $any(source).url }}
+          </a>
+        </div>
+      </section>
+    </div>
+  </ng-container>
+</ng-template>

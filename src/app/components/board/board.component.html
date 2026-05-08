@@ -1,0 +1,26 @@
+<app-header-board [columns]="kanbanService.columns()"></app-header-board>
+<div class="mx-auto min-h-screen bg-gray-100">
+  <div
+    class="flex min-h-screen"
+    cdkDropListGroup
+    cdkDropList
+    cdkDropListOrientation="horizontal"
+    (cdkDropListDropped)="listDrop($event)"
+  >
+    @for (column of kanbanService.columns(); track column.id) {
+      <app-kanban-column
+        cdkDrag
+        class="flex-1 p-4 border-r border-gray-300 last:border-r-0"
+        cdkDropList
+        [cdkDropListData]="column.tickets"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <h2 class="text-2xl font-bold">{{ column.title }}</h2>
+
+        @for (ticket of column.tickets; track ticket.id) {
+          <app-kanban-item cdkDrag [item]="ticket" class="mb-8 last:mb-0" />
+        }
+      </app-kanban-column>
+    }
+  </div>
+</div>

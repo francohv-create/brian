@@ -1,0 +1,85 @@
+<div class="brian-center">
+  <!-- <div class="brian-face">
+    <img src="logo2.svg" alt="" />
+    <div class="online-dot"></div>
+  </div> -->
+  <div class="brian-face">
+    <img src="logo2.svg" alt="" />
+    <div class="online-dot"></div>
+  </div>
+
+  <div class="brian-label">Brian · en línea</div>
+  <div class="brian-title">¿Para quien generamos la propuesta?</div>
+  <!-- <div class="brian-sub">
+    Tengo 12 propuestas anteriores listas para aprender de ellas.
+  </div> -->
+</div>
+<form
+  class="hero"
+  [formGroup]="form"
+  (ngSubmit)="sendPrompt()"
+  [class.loading]="loading"
+>
+  <div class="tags">
+    <div class="tag" [class.on]="mode === 'nuevo'" (click)="setMode('nuevo')">
+      Cliente nuevo
+    </div>
+
+    <div class="tag" [class.on]="mode === 'actual'" (click)="setMode('actual')">
+      Cliente actual
+    </div>
+    <div *ngIf="mode === 'actual'" class="client-input">
+      <input
+        type="text"
+        formControlName="clientName"
+        placeholder="Nombre del cliente"
+      />
+      <div class="error" *ngIf="form.get('clientName')?.invalid">
+        El mensaje es obligatorio
+      </div>
+    </div>
+  </div>
+
+  <div class="input-wrap">
+    <textarea
+      formControlName="message"
+      (focus)="onFocusTextarea()"
+      [class.expanded]="isExpanded"
+      placeholder="Pedile algo a Brian..."
+    ></textarea>
+    <div class="input-actions">
+      <button class="send-btn" type="submit">
+        Generar
+        <svg viewBox="0 0 16 16" fill="none">
+          <path
+            d="M3 8h10M9 4l4 4-4 4"
+            stroke="white"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div
+    class="error"
+    *ngIf="form.get('message')?.invalid && form.get('message')?.touched"
+  >
+    El mensaje es obligatorio
+  </div>
+
+  <div class="tags">
+    <div
+      class="tag"
+      *ngFor="let tag of tags"
+      [class.on]="tag.active"
+      (click)="toggleTag(tag)"
+    >
+      <span class="tag-dot" [style.background]="tag.color"></span>
+      {{ tag.label }}
+    </div>
+  </div>
+</form>
+
+<brian-footer></brian-footer>
